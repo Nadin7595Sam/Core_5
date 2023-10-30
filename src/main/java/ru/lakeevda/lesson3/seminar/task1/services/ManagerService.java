@@ -34,7 +34,7 @@ public class ManagerService {
         DepartmentHRService departmentHRService = new DepartmentHRService();
         List<Employee> employeesByDepartment = departmentHRService.getEmployeesByDepartment();
         if (employeesByDepartment == null) {
-            View.printConsole("В департаменте нет работников");
+            View.printConsole("В департаменте нет сотрудников");
             return;
         }
         for (Employee emp : employeesByDepartment) {
@@ -81,7 +81,7 @@ public class ManagerService {
         }
         Task task = tasks.get(0);
         View.printConsoleList(department.getDepartmentEmployee());
-        int taskIDEmployee = scannerService.intScanner("Введите  id рвботника для назначения задачи");
+        int taskIDEmployee = scannerService.intScanner("Введите id работника для назначения задачи");
         List<Employee> employees = department.getDepartmentEmployee().stream()
                 .filter(x -> x.getId() == taskIDEmployee)
                 .toList();
