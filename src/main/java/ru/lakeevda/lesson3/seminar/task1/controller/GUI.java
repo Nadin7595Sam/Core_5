@@ -30,7 +30,7 @@ public class GUI {
     public void run() {
         boolean isExit = true;
         while (isExit) {
-            String command = scannerService.stringScanner("Введите команду. Либо воспользуйтесь командой HELP ").toUpperCase();
+            String command = scannerService.stringScanner("Введите команду или воспользуйтесь командой HELP ").toUpperCase();
             switch (command) {
                 case ("EXIT") -> {
                     isExit = false;
@@ -53,7 +53,7 @@ public class GUI {
                 case ("TASK M") -> ManagerService.assigmentTaskManual();
                 case ("EMP S") -> employeeGUI();
                 default -> {
-                    View.printConsole("Команда не распознана");
+                    View.printConsole("Команда не найдена");
                     View.help();
                 }
             }
@@ -69,7 +69,7 @@ public class GUI {
             return;
         }
         while (isExit) {
-            String command = scannerService.stringScanner("Введите команду. Либо воспользуйтесь командой HELP ").toUpperCase();
+            String command = scannerService.stringScanner("Введите команду или воспользуйтесь командой HELP ").toUpperCase();
             switch (command) {
                 case ("EXIT") -> isExit = false;
                 case ("HELP") -> View.helpEmployee();
@@ -78,7 +78,7 @@ public class GUI {
                 case ("EMP HT") -> employeeService.onHoldCurrentTask(employee);
                 case ("EMP LT") -> employeeService.getAssigmentsByEmployee(employee).forEach(System.out::println);
                 default -> {
-                    View.printConsole("Команда не распознана");
+                    View.printConsole("Команда не найдена");
                     View.helpEmployee();
                 }
             }
