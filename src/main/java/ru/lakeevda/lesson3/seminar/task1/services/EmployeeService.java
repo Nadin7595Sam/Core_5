@@ -25,12 +25,6 @@ public class EmployeeService {
         return getAssigmentsByEmployee(employee);
     }
 
-    /**
-     * Полностью поменял логику старта задач. При нажатии сотрудником кнопки "Взять задачу"
-     * сотруднику автоматически в работу выдается задача с наивысшим приоритетом из спмска назначенных
-     * ему planTask - ом
-     */
-
     public void startTaskByEmployee(Employee employee) {
         if (!checkingEmployeeHasCompletedTasks(employee).isEmpty()) {
             View.printConsole("Необходимо завершить/отложить текущее задание");
@@ -41,7 +35,7 @@ public class EmployeeService {
                 .sorted(Comparator.comparingInt(x -> x.getTask().getPriority().getPriority()))
                 .toList();
         if (assigmentsSort.isEmpty()) {
-            View.printConsole("Спмсок назначенных задач пуст");
+            View.printConsole("Список назначенных задач пуст");
             return;
         }
         employee.setWorking(true);
@@ -56,10 +50,6 @@ public class EmployeeService {
                 .filter(x -> x.getTask().getStatus() == Status.IN_PROGRESS)
                 .toList();
     }
-
-    /**
-     * Автоматически завершается задача находящаяся в работе
-     */
     public void finishTaskByEmployee(Employee employee) {
         List<Assigment> assigmentsSort = checkingEmployeeHasCompletedTasks(employee);
         if (assigmentsSort.isEmpty()) {
