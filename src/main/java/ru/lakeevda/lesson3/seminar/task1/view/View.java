@@ -15,7 +15,7 @@ public class View {
      * Информирование работника о поступлении нового задания.
      */
     public static void informingEmployee(Employee employee, Priority priority) {
-        View.printConsole("Для " + employee + " назначена новая задача с приоритетом " + priority);
+        View.printConsole("Для " + employee + " назначена новая задача приоритета " + priority);
     }
 
     public static <T> void printConsoleList(List<T> list) {
@@ -27,14 +27,14 @@ public class View {
         printConsole("EXIT - выход из приложения");
         printConsole("GET A - список назначенных задач");
         printConsole("GET FT - список неназначенных задач");
-        printConsole("GET E -  список персонала");
-        printConsole("GET AE - список назначенных задач по работнику");
-        printConsole("GET ADE - список персонала департамента");
+        printConsole("GET E -  список сотрудников");
+        printConsole("GET AE - список назначенных задач по сотруднику");
+        printConsole("GET ADE - список сотрудников департамента");
         printConsole("GET CT - список завершенных задач");
-        printConsole("CREATE E - новый работник");
+        printConsole("CREATE E - новый сотрудник");
         printConsole("CREATE T - новая задача");
-        printConsole("TASK M - назначение задач в ручную из списка неназначенных задач");
-        printConsole("EMP S - вход в подменю персонала");
+        printConsole("TASK M - назначение задач вручную из списка неназначенных задач");
+        printConsole("EMP S - вход в подмену сотрудников");
     }
 
     public static void helpEmployee() {
