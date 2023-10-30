@@ -19,8 +19,6 @@ public class SelectionEmployee {
 
 
     public Employee selectionEmployee(Skill skill, Priority priority) {
-        // При большом количестве заданий необходимо считать общее время заданий и раздавать задания с учетом общей занятости работника
-        // Так же при малом количестве заданий все задания будут сыпаться на первого работника. Что тоже не комильфо
         List<Employee> sortEmployees = EmployeeRepository.getEmployees().stream()
                 .filter(x -> x.getSkill() == skill)
                 .toList();
@@ -36,14 +34,12 @@ public class SelectionEmployee {
             } else if (checkingTotalTaskCompletionTime(employee))
                 return employee;
         }
-        ManagerService.informingManager("ВНИМАНИЕ МЕНЕДЖЕРОВ! "
-                + " нет свободных работников для выполнения задания");
+        ManagerService.informingManager("Нет свободных работников для выполнения задания");
         return new Employee(Skill.NoSKILL);
 
     }
 
     public boolean checkingTotalTaskCompletionTime(Employee employee) {
-        //    Здесь должна быть логика отслеживающая время до конца рабочего дня
         int maximumTotalTaskCompletionTime = 61;
 
         int totalTaskCompletionTime = employeeService.getAssigmentsByEmployee(employee).stream()
